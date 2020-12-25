@@ -6,7 +6,7 @@
           <i class="iconfont icon-swordsman" />
           <div class="text">
             <i18n>
-              <template #zh>一个渣男，一架飞机，两条狗</template>
+              <template #zh>一个渣男</template>
               <template #en>I'm Surmon, a digital nomad.</template>
             </i18n>
           </div>
@@ -17,7 +17,7 @@
             <span class="like-text">
               <i18n
                 zh="酒池肉林、日夜笙歌、依翠偎红、五音六律、目营心匠、桀骜不羁"
-                en="code. beauty. whisky. music. vagrant."
+                en="misfits. rebels. troublemakers. rocker."
               />
             </span>
           </div>
