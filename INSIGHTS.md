@@ -95,4 +95,30 @@ await Promise.all(matchedComponents.map(
 - 进入路由之前校验路由的 `meta.validate` 若不通过，则会在此处就 setError, 目标页面渲染为空数据，app 渲染为 errorPage
 - setup 返回 Promise，当 Promise 成功时，一切正常，失败时 setError，目标页面渲染为空数据，再次 render，app 渲染为 errorPage，若后续 Issues 修复，则可调整逻辑至：以组件 Promise 返回结果为准决定是否渲染错误页面
 
+### SSRContext
+
+`ssrContextKey` 用于在组件中接受 `renderToString` 传入的 props 数据，该能力应用在需要 SSR Render 时向整个应用跨组件注入数据的场景下。
+该 `key` 和 `useSSRContext` 都仅在 Server 生效，不能用于通与场景。
+
+鉴于此应用中无此需求：应用抽象有独立的 `global state` 层，且全局共享，故不使用此能力。
+
+```js
+const { createSSRApp, defineComponent, h, inject, ssrContextKey, useSSRContext } = require('vue')
+const { renderToString } = require('@vue/server-renderer')
+
+const app = createSSRApp(defineComponent({
+  name: 'context',
+  setup() {
+    const ssrContext = inject(ssrContextKey)
+    const ssrContext2 = useSSRContext()
+    console.log('ssrContext', ssrContext === ssrContext2, ssrContext)
+    return () => h('div', 'hello')
+  }
+}))
+
+;(async () => {
+  console.log(await renderToString(app, { abc: 10 }))
+})()
+```
+
 ### Vite
