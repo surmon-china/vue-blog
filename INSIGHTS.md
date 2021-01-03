@@ -52,6 +52,7 @@ renderToString(app).then(res => {
 ```
 
 - [Issue](https://github.com/vuejs/vue-next/issues/2736)
+- [PR](https://github.com/vuejs/vue-next/pull/2881)
 
 `serverPrefetch` 和 `async setup` 都不能被用作 “抛错即处理” 的预期目的，因为 `renderToString` 的实现中忽略了 `Promise.reject` 返回的结果状态，可参见[此处源码](https://github.com/vuejs/vue-next/blob/master/packages/server-renderer/src/render.ts#L96)，所以只能在 SSR 层面自行实现 `validate` & `preFetch`。
 
