@@ -47,7 +47,7 @@
     "lodash": "^4.17.20",
     "lozad": "^1.16.0",
     "lru-cache": "^6.0.0",
-    "marked": "^1.2.7",
+    "marked": "^2.0.0",
     "serialize-javascript": "^5.0.1",
     "simple-netease-cloud-music": "^0.5.2",
     "socket.io": "^3.0.4",
